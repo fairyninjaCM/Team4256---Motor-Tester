@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
-//import com.revrobotics.CANSparkMax;
-//import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -24,10 +24,10 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
- // private final CANSparkMax neoMotor1 = new CANSparkMax( 35, MotorType.kBrushless);
+  private final CANSparkMax neoMotor1 = new CANSparkMax( 41, MotorType.kBrushless);
   //private final CANSparkMax neoMotor2 = new CANSparkMax( 42, MotorType.kBrushless);
-  private final TalonFX falconMotor1 = new TalonFX(30);
-  private final TalonFX falconMotor2 = new TalonFX(31);
+  //private final TalonFX falconMotor1 = new TalonFX(30);
+  //private final TalonFX falconMotor2 = new TalonFX(31);
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -90,9 +90,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     //double speedFromDash = SmartDashboard.getNumber("SmartDashSpeed", 0);
-
-    falconMotor1.set(TalonFXControlMode.PercentOutput, -.60);
-    falconMotor2.set(TalonFXControlMode.PercentOutput, .60);
+    neoMotor1.set(.5);
+    //neoMotor2.set(.5);
+    //falconMotor1.set(TalonFXControlMode.PercentOutput, -.60);
+    //falconMotor2.set(TalonFXControlMode.PercentOutput, .60);
   }
 
   /** This function is called once when the robot is disabled. */
