@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
   //private final CANSparkMax neoMotor2 = new CANSparkMax( 42, MotorType.kBrushless);
   private final TalonFX falconMotor1 = new TalonFX(30);
   private final TalonFX falconMotor2 = new TalonFX(31);
+  private final double percentValue = 70;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -36,7 +37,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    SmartDashboard.putData("Auto choices", m_chooser); 
   }
 
   /**
@@ -83,7 +84,7 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-    SmartDashboard.putNumber("SmartDashSpeed", 0);
+    //SmartDashboard.putNumber("SmartDashSpeed", 0);
   }
 
   /** This function is called periodically during operator control. */
@@ -92,8 +93,8 @@ public class Robot extends TimedRobot {
     //double speedFromDash = SmartDashboard.getNumber("SmartDashSpeed", 0);
     //neoMotor1.set(.5);
     //neoMotor2.set(.5);
-    falconMotor1.set(TalonFXControlMode.PercentOutput, -.60);
-    falconMotor2.set(TalonFXControlMode.PercentOutput, .60);
+    falconMotor1.set(TalonFXControlMode.PercentOutput, -percentValue);
+    falconMotor2.set(TalonFXControlMode.PercentOutput, percentValue);
   }
 
   /** This function is called once when the robot is disabled. */
